@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Física</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora Física</h1>
+        <select id="category" onchange="showInputs()">
+            <option value="">Selecciona una categoría</option>
+            <option value="cinematica">Movimiento Acelerado</option>
+            <option value="dinamica">Dinámica</option>
+            <option value="energia">Energía</option>
+            <option value="conversiones">Conversion de unidades</option>
+            <option value="temperatura">Temperatura</option>
+        </select>
+
+        <div id="inputs" class="input-section"></div>
+        <button id="calculate" onclick="calculate()" disabled>Calcular</button>
+        <div id="result" class="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
