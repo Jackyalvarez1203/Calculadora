@@ -4,8 +4,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh; /* Usamos min-height para evitar problemas en móviles */
     margin: 0;
+    padding: 10px; /* Añadimos un poco de padding para que no esté pegado al borde */
+    box-sizing: border-box; /* Para que el padding no afecte al tamaño total */
 }
 
 .container {
@@ -13,12 +15,14 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    width: 100%; /* Cambiamos a 100% para que se adapte */
+    max-width: 400px; /* Mantenemos un máximo para pantallas grandes */
     text-align: center;
+    box-sizing: border-box; /* Para que el padding no rompa el layout */
 }
 
 h1 {
-    font-size: 24px;
+    font-size: clamp(18px, 5vw, 24px); /* Tamaño dinámico para el h1 */
     margin-bottom: 20px;
 }
 
@@ -28,6 +32,8 @@ select, input, button {
     margin: 10px 0;
     border-radius: 5px;
     border: 1px solid #ccc;
+    font-size: clamp(14px, 2.5vw, 16px); /* Aseguramos que el texto sea legible */
+    box-sizing: border-box;
 }
 
 button {
@@ -48,4 +54,42 @@ button:disabled {
 .result {
     margin-top: 20px;
     font-weight: bold;
+    font-size: clamp(14px, 2.5vw, 16px); /* Tamaño dinámico para el texto */
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px; /* Reducimos el padding en móviles */
+        max-width: 100%; /* Ocupa todo el ancho disponible */
+    }
+
+    h1 {
+        font-size: clamp(16px, 4.5vw, 20px); /* Reducimos un poco más para móviles */
+    }
+
+    select, input, button {
+        padding: 8px; /* Reducimos el padding para que no se vea tan grande */
+        font-size: clamp(12px, 2.2vw, 14px); /* Aseguramos legibilidad */
+    }
+
+    .input-section {
+        margin-top: 15px; /* Reducimos márgenes */
+    }
+
+    .result {
+        margin-top: 15px;
+        font-size: clamp(12px, 2.2vw, 14px);
+    }
+}
+
+/* Para evitar que el contenido se desborde en pantallas muy pequeñas */
+@media (max-width: 320px) {
+    body {
+        padding: 5px;
+    }
+
+    .container {
+        padding: 10px;
+    }
 }
