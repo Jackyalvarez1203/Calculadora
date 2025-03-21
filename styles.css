@@ -1,89 +1,170 @@
+/* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #d5eeff;
+    font-family: 'Segoe UI', Arial, sans-serif; /* Fuente más moderna */
+    background: #f0f2f5;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Usamos min-height para evitar problemas en móviles */
+    min-height: 100vh; /* Asegura que ocupe toda la altura */
     margin: 0;
-    padding: 10px; /* Añadimos un poco de padding para que no esté pegado al borde */
-    box-sizing: border-box; /* Para que el padding no afecte al tamaño total */
+    padding: 15px; /* Padding más amplio para evitar que se pegue al borde */
+    box-sizing: border-box;
+    overflow-x: hidden; /* Evita desbordamiento horizontal */
+    font-family: 'Times New Roman', Times, serif; /* Cambiamos a Times New Roman con respaldo */
 }
 
+/* Contenedor principal */
 .container {
-    background: rgb(255, 255, 255);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Cambiamos a 100% para que se adapte */
-    max-width: 400px; /* Mantenemos un máximo para pantallas grandes */
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra más suave y moderna */
+    width: 100%;
+    max-width: 450px; /* Aumentamos un poco el tamaño máximo */
     text-align: center;
-    box-sizing: border-box; /* Para que el padding no rompa el layout */
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 123, 255, 0.1); /* Borde sutil */
 }
 
+/* Título */
 h1 {
-    font-size: clamp(18px, 5vw, 24px); /* Tamaño dinámico para el h1 */
-    margin-bottom: 20px;
+    font-size: clamp(20px, 5.5vw, 28px); /* Tamaño dinámico más grande */
+    margin-bottom: 25px;
+    color: #333; /* Color más oscuro para mejor contraste */
+    font-weight: 600; /* Un poco más de peso para el título */
 }
 
+/* Estilos para inputs, selects y botones */
 select, input, button {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: clamp(14px, 2.5vw, 16px); /* Aseguramos que el texto sea legible */
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: clamp(14px, 2.5vw, 16px);
     box-sizing: border-box;
+    transition: all 0.3s ease; /* Transición suave para interacciones */
 }
 
+/* Estilo para inputs y selects */
+select, input {
+    background-color: #f9f9f9; /* Fondo claro */
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05); /* Sombra interna sutil */
+}
+
+select:focus, input:focus {
+    outline: none;
+    border-color: #007BFF; /* Borde azul al hacer foco */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2); /* Sombra al hacer foco */
+}
+
+/* Estilo para el botón */
 button {
     background-color: #007BFF;
     color: white;
+    font-weight: 500;
     cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.1s ease; /* Transiciones suaves */
+}
+
+button:hover:not(:disabled) {
+    background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+    transform: translateY(-2px); /* Efecto de elevación */
+}
+
+button:active:not(:disabled) {
+    transform: translateY(0); /* Vuelve a su posición al hacer clic */
 }
 
 button:disabled {
-    background-color: #ccc;
+    background-color: #cccccc;
     cursor: not-allowed;
+    box-shadow: none;
 }
 
+/* Sección de inputs */
 .input-section {
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
+/* Estilo para el resultado */
 .result {
-    margin-top: 20px;
-    font-weight: bold;
-    font-size: clamp(14px, 2.5vw, 16px); /* Tamaño dinámico para el texto */
+    margin-top: 25px;
+    font-weight: 600;
+    font-size: clamp(14px, 2.5vw, 16px);
+    color: #1a3c34; /* Color verde oscuro para destacar */
+    background-color: #e7f3ef; /* Fondo claro para el resultado */
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #d1e7dd;
 }
 
-/* Media query para pantallas pequeñas */
-@media (max-width: 480px) {
+/* Media query para pantallas medianas (tablets) */
+@media (max-width: 768px) {
     .container {
-        padding: 15px; /* Reducimos el padding en móviles */
-        max-width: 100%; /* Ocupa todo el ancho disponible */
+        max-width: 90%; /* Ocupa más espacio en tablets */
+        padding: 20px;
     }
 
     h1 {
-        font-size: clamp(16px, 4.5vw, 20px); /* Reducimos un poco más para móviles */
+        font-size: clamp(18px, 5vw, 24px);
     }
 
     select, input, button {
-        padding: 8px; /* Reducimos el padding para que no se vea tan grande */
-        font-size: clamp(12px, 2.2vw, 14px); /* Aseguramos legibilidad */
+        padding: 10px;
+        font-size: clamp(13px, 2.3vw, 15px);
     }
 
     .input-section {
-        margin-top: 15px; /* Reducimos márgenes */
+        margin-top: 20px;
+    }
+
+    .result {
+        margin-top: 20px;
+        font-size: clamp(13px, 2.3vw, 15px);
+    }
+}
+
+/* Media query para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+        max-width: 100%; /* Ocupa todo el ancho disponible */
+        border-radius: 10px;
+    }
+
+    h1 {
+        font-size: clamp(16px, 4.5vw, 20px);
+    }
+
+    select, input, button {
+        padding: 8px;
+        margin: 8px 0;
+        font-size: clamp(12px, 2.2vw, 14px);
+        border-radius: 6px;
+    }
+
+    button {
+        padding: 10px; /* Un poco más de padding para facilitar el toque */
+    }
+
+    .input-section {
+        margin-top: 15px;
     }
 
     .result {
         margin-top: 15px;
         font-size: clamp(12px, 2.2vw, 14px);
+        padding: 8px;
     }
 }
 
-/* Para evitar que el contenido se desborde en pantallas muy pequeñas */
+/* Para pantallas muy pequeñas (menores a 320px) */
 @media (max-width: 320px) {
     body {
         padding: 5px;
@@ -91,5 +172,20 @@ button:disabled {
 
     .container {
         padding: 10px;
+        border-radius: 8px;
+    }
+
+    h1 {
+        font-size: clamp(14px, 4vw, 18px);
+    }
+
+    select, input, button {
+        padding: 6px;
+        font-size: clamp(11px, 2vw, 13px);
+    }
+
+    .result {
+        font-size: clamp(11px, 2vw, 13px);
+        padding: 6px;
     }
 }
