@@ -9,18 +9,25 @@
 <body>
     <div class="container">
         <h1>Calculadora Física</h1>
-        <select id="category" onchange="showInputs()">
+        <select id="category" onchange="updateSubcategories()">
             <option value="">Selecciona una categoría</option>
-            <option value="cinematica">Movimiento Acelerado</option>
+            <option value="cinematica">Cinemática</option>
             <option value="dinamica">Dinámica</option>
             <option value="energia">Energía</option>
-            <option value="conversiones">Conversion de unidades</option>
+            <option value="conversiones">Conversiones</option>
             <option value="temperatura">Temperatura</option>
+            <option value="momento">Momento y Colisiones</option>
+            <option value="gravedad">Gravitación</option>
+            <option value="electricidad">Electricidad</option>
+            <option value="ondas">Ondas y Óptica</option>
+            <option value="termodinamica">Termodinámica</option>
         </select>
-
-        <div id="inputs" class="input-section"></div>
+        <select id="subcategory" onchange="showInputs()">
+            <option value="">Selecciona un subtema</option>
+        </select>
+        <div id="inputs"></div>
         <button id="calculate" onclick="calculate()" disabled>Calcular</button>
-        <div id="result" class="result"></div>
+        <div id="result"></div>
     </div>
     <script src="script.js"></script>
 </body>
