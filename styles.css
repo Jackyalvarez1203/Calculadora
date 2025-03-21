@@ -1,16 +1,16 @@
 /* Estilos generales */
 body {
-    font-family: 'Segoe UI', Arial, sans-serif; /* Fuente más moderna */
+    font-family: 'Times New Roman', Times, serif;
     background: #f0f2f5;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Asegura que ocupe toda la altura */
+    min-height: 100vh;
     margin: 0;
-    padding: 15px; /* Padding más amplio para evitar que se pegue al borde */
+    padding: 15px;
     box-sizing: border-box;
-    overflow-x: hidden; /* Evita desbordamiento horizontal */
-    font-family: 'Times New Roman', Times, serif; /* Cambiamos a Times New Roman con respaldo */
+    overflow-x: hidden;
+    font-size: 16px;
 }
 
 /* Contenedor principal */
@@ -18,20 +18,28 @@ body {
     background: #ffffff;
     padding: 25px;
     border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra más suave y moderna */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 450px; /* Aumentamos un poco el tamaño máximo */
+    max-width: 500px; /* Aumentamos el ancho para acomodar el gráfico */
     text-align: center;
     box-sizing: border-box;
-    border: 1px solid rgba(0, 123, 255, 0.1); /* Borde sutil */
+    border: 1px solid rgba(0, 123, 255, 0.1);
 }
 
-/* Título */
+/* Título con ícono */
 h1 {
-    font-size: clamp(20px, 5.5vw, 28px); /* Tamaño dinámico más grande */
+    font-size: clamp(22px, 5.5vw, 30px);
     margin-bottom: 25px;
-    color: #333; /* Color más oscuro para mejor contraste */
-    font-weight: 600; /* Un poco más de peso para el título */
+    color: #333;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.icon {
+    font-size: 1.5em;
 }
 
 /* Estilos para inputs, selects y botones */
@@ -41,40 +49,86 @@ select, input, button {
     margin: 12px 0;
     border-radius: 8px;
     border: 1px solid #ddd;
-    font-size: clamp(14px, 2.5vw, 16px);
+    font-size: clamp(15px, 2.5vw, 17px);
     box-sizing: border-box;
-    transition: all 0.3s ease; /* Transición suave para interacciones */
+    transition: all 0.3s ease;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 /* Estilo para inputs y selects */
 select, input {
-    background-color: #f9f9f9; /* Fondo claro */
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05); /* Sombra interna sutil */
+    background-color: #f9f9f9;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 select:focus, input:focus {
     outline: none;
-    border-color: #007BFF; /* Borde azul al hacer foco */
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2); /* Sombra al hacer foco */
+    border-color: #007BFF;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
 }
 
-/* Estilo para el botón */
+/* Tooltips */
+label {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+label .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 14px;
+}
+
+label:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Estilo para el grupo de botones */
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
 button {
     background-color: #007BFF;
     color: white;
-    font-weight: 500;
+    font-weight: bold;
     cursor: pointer;
     border: none;
-    transition: background-color 0.3s ease, transform 0.1s ease; /* Transiciones suaves */
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    flex: 1;
+}
+
+button#clear {
+    background-color: #dc3545;
+}
+
+button#clear:hover:not(:disabled) {
+    background-color: #c82333;
 }
 
 button:hover:not(:disabled) {
-    background-color: #0056b3; /* Color más oscuro al pasar el mouse */
-    transform: translateY(-2px); /* Efecto de elevación */
+    background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
 button:active:not(:disabled) {
-    transform: translateY(0); /* Vuelve a su posición al hacer clic */
+    transform: translateY(0);
 }
 
 button:disabled {
@@ -91,29 +145,37 @@ button:disabled {
 /* Estilo para el resultado */
 .result {
     margin-top: 25px;
-    font-weight: 600;
-    font-size: clamp(14px, 2.5vw, 16px);
-    color: #1a3c34; /* Color verde oscuro para destacar */
-    background-color: #e7f3ef; /* Fondo claro para el resultado */
+    font-weight: bold;
+    font-size: clamp(15px, 2.5vw, 17px);
+    color: #1a3c34;
+    background-color: #e7f3ef;
     padding: 10px;
     border-radius: 8px;
     border: 1px solid #d1e7dd;
 }
 
+/* Contenedor del gráfico */
+.chart-container {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 100%;
+    height: 300px;
+}
+
 /* Media query para pantallas medianas (tablets) */
 @media (max-width: 768px) {
     .container {
-        max-width: 90%; /* Ocupa más espacio en tablets */
+        max-width: 90%;
         padding: 20px;
     }
 
     h1 {
-        font-size: clamp(18px, 5vw, 24px);
+        font-size: clamp(20px, 5vw, 26px);
     }
 
     select, input, button {
         padding: 10px;
-        font-size: clamp(13px, 2.3vw, 15px);
+        font-size: clamp(14px, 2.3vw, 16px);
     }
 
     .input-section {
@@ -122,7 +184,11 @@ button:disabled {
 
     .result {
         margin-top: 20px;
-        font-size: clamp(13px, 2.3vw, 15px);
+        font-size: clamp(14px, 2.3vw, 16px);
+    }
+
+    .chart-container {
+        height: 250px;
     }
 }
 
@@ -134,23 +200,28 @@ button:disabled {
 
     .container {
         padding: 15px;
-        max-width: 100%; /* Ocupa todo el ancho disponible */
+        max-width: 100%;
         border-radius: 10px;
     }
 
     h1 {
-        font-size: clamp(16px, 4.5vw, 20px);
+        font-size: clamp(18px, 4.5vw, 22px);
     }
 
     select, input, button {
         padding: 8px;
         margin: 8px 0;
-        font-size: clamp(12px, 2.2vw, 14px);
+        font-size: clamp(13px, 2.2vw, 15px);
         border-radius: 6px;
     }
 
+    .button-group {
+        flex-direction: column;
+        gap: 8px;
+    }
+
     button {
-        padding: 10px; /* Un poco más de padding para facilitar el toque */
+        padding: 10px;
     }
 
     .input-section {
@@ -159,8 +230,12 @@ button:disabled {
 
     .result {
         margin-top: 15px;
-        font-size: clamp(12px, 2.2vw, 14px);
+        font-size: clamp(13px, 2.2vw, 15px);
         padding: 8px;
+    }
+
+    .chart-container {
+        height: 200px;
     }
 }
 
@@ -176,16 +251,20 @@ button:disabled {
     }
 
     h1 {
-        font-size: clamp(14px, 4vw, 18px);
+        font-size: clamp(16px, 4vw, 20px);
     }
 
     select, input, button {
         padding: 6px;
-        font-size: clamp(11px, 2vw, 13px);
+        font-size: clamp(12px, 2vw, 14px);
     }
 
     .result {
-        font-size: clamp(11px, 2vw, 13px);
+        font-size: clamp(12px, 2vw, 14px);
         padding: 6px;
+    }
+
+    .chart-container {
+        height: 180px;
     }
 }
