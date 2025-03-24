@@ -3,51 +3,363 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Física</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Incluimos Chart.js desde un CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Índice de Proyectos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Georgia, 'Times New Roman', Times, serif
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+  
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1920x600');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            overflow-wrap: break-word; 
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            overflow-wrap: break-word;
+        }
+
+
+        nav {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ddd;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+        }
+
+  
+        .projects-section {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .projects-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #333;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .project-card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .project-card-content p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .project-card-content a {
+            text-decoration: none;
+            color: #3c3c3c;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .project-card-content a:hover {
+            color: #5d5d5d;
+        }
+
+        .icon {
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: 50px;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            
+            header {
+                height: 50vh;
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+                max-width: 90%; 
+                overflow-wrap: break-word; 
+            }
+
+            header p {
+                font-size: 1rem;
+                max-width: 90%;
+                line-height: 1.4;
+            }
+
+          
+            .hamburger {
+                display: block;
+            }
+
+            nav {
+                padding: 15px 20px;
+            }
+
+            nav .logo {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                padding: 20px 0;
+                display: none;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            nav ul li a {
+                font-size: 1.1rem;
+            }
+
+   
+            .projects-section {
+                padding: 30px 15px;
+            }
+
+            .projects-section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .project-card img {
+                height: 150px;
+            }
+
+            .project-card-content {
+                padding: 15px;
+            }
+
+            .project-card-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .project-card-content p {
+                font-size: 0.85rem;
+            }
+
+            .project-card-content a {
+                font-size: 0.9rem;
+            }
+
+          
+            footer {
+                padding: 15px;
+            }
+
+            footer p {
+                font-size: 0.8rem;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+            header {
+                height: 40vh; 
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+                max-width: 85%;
+                line-height: 1.3;
+            }
+
+            header p {
+                font-size: 0.9rem;
+                max-width: 85%;
+            }
+
+            nav .logo {
+                font-size: 1rem;
+            }
+
+            .hamburger {
+                font-size: 1.5rem;
+            }
+
+            nav ul {
+                top: 50px;
+            }
+
+            .projects-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .project-card img {
+                height: 120px;
+            }
+
+            .project-card-content h3 {
+                font-size: 1rem;
+            }
+
+            .project-card-content p {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>
-            <span class="icon"></span> Calculadora de Física
-        </h1>
-        <label for="category">Selecciona una categoría:</label>
-        <select id="category" onchange="updateSubcategories(); showInputs();">
-            <option value="">Selecciona una categoría</option>
-            <option value="cinematica">Cinemática</option>
-            <option value="dinamica">Dinámica</option>
-            <option value="energia">Energía</option>
-            <option value="conversiones">Conversiones de Unidades</option>
-            <option value="temperatura">Temperatura</option>
-            <option value="momento">Momento y Colisiones</option>
-            <option value="gravedad">Gravedad</option>
-            <option value="electricidad">Electricidad</option>
-            <option value="ondas">Ondas</option>
-            <option value="termodinamica">Termodinámica</option>
-        </select>
 
-        <label for="subcategory">Selecciona un subtema:</label>
-        <select id="subcategory" onchange="showInputs();">
-            <option value="">Selecciona un subtema</option>
-        </select>
+    <nav>
+        <div class="logo">PROYECTOS</div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <ul id="nav-menu">
+            <li><a href="#home">Inicio</a></li>
+            <li><a href="#projects">Proyectos</a></li>
+            <li><a href="#contact">Contacto</a></li>
+        </ul>
+    </nav>
 
-        <div class="input-section" id="inputs"></div>
+  
+    <header>
+        <h1>Explora Mis Proyectos</h1>
+        <p>Una colección de herramientas y simulaciones interactivas diseñadas para aprender y experimentar.</p>
+    </header>
 
-        <div class="button-group">
-            <button id="calculate" onclick="calculate()" disabled>Calcular</button>
-            <button id="clear" onclick="clearForm()">Limpiar</button>
-        </div>
 
-        <div class="result" id="result"></div>
-        <canvas id="physicsChart" style="max-height: 400px; max-width: 600px;"></canvas>
+    <section class="projects-section" id="projects">
+        <h2>Mis Proyectos</h2>
+        <div class="projects-grid">
+   
+            <div class="project-card">
+                <div class="project-card-content">
+                    <h3><span class="icon"></span>Calculadora Física</h3>
+                    <p>Herramienta para resolver problemas de física de manera rápida y sencilla.</p>
+                    <a href="./Calculadora/Calculadora-fisica.html">Ver Proyecto</a>
+                </div>
+            </div>
+    </section>
 
-        <!-- Contenedor para el gráfico -->
-        <div class="chart-container">
-            <canvas id="physicsChart"></canvas>
-        </div>
-    </div>
-    <script src="script.js"></script>
+    <footer>
+        <p>© 2025 - Proyectos creados con pasión y curiosidad.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
